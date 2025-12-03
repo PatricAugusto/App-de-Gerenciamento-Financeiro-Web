@@ -2,30 +2,32 @@
 
 import React from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
-import Link from 'next/link'; 
+import Link from 'next/link';
 
 const AppNavbar = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-
-        <Link href="/" passHref asChild>
-          <Navbar.Brand>💰 Gerenciador Financeiro</Navbar.Brand>
+  
+        <Link href="/" as={Navbar.Brand}>
+          💰 Gerenciador Financeiro
         </Link>
         
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-
-            <Link href="/" passHref asChild>
-              <Nav.Link>Visão Geral</Nav.Link>
+            
+            <Link href="/" as={Nav.Link}>
+              Visão Geral
             </Link>
-            <Link href="/transactions" passHref asChild>
-              <Nav.Link>Transações</Nav.Link>
+            
+            <Link href="/transactions" as={Nav.Link}>
+              Transações
             </Link>
-            <Link href="/reports" passHref asChild>
-              <Nav.Link>Relatórios</Nav.Link>
+            
+            <Link href="/reports" as={Nav.Link}>
+              Relatórios
             </Link>
           </Nav>
         </Navbar.Collapse>
