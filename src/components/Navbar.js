@@ -9,7 +9,7 @@ const AppNavbar = () => {
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
 
-        <Link href="/" passHref legacyBehavior>
+        <Link href="/" passHref asChild>
           <Navbar.Brand>💰 Gerenciador Financeiro</Navbar.Brand>
         </Link>
         
@@ -18,16 +18,14 @@ const AppNavbar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
 
-            <Link href="/" passHref legacyBehavior>
-              <Nav.Link as="a">Visão Geral</Nav.Link>
+            <Link href="/" passHref asChild>
+              <Nav.Link>Visão Geral</Nav.Link>
             </Link>
-
-            <Link href="/transactions" passHref legacyBehavior>
-              <Nav.Link as="a">Transações</Nav.Link>
+            <Link href="/transactions" passHref asChild>
+              <Nav.Link>Transações</Nav.Link>
             </Link>
-
-            <Link href="/reports" passHref legacyBehavior>
-              <Nav.Link as="a">Relatórios</Nav.Link>
+            <Link href="/reports" passHref asChild>
+              <Nav.Link>Relatórios</Nav.Link>
             </Link>
           </Nav>
         </Navbar.Collapse>
