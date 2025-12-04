@@ -8,9 +8,9 @@ const AppNavbar = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-  
-        <Link href="/" as={Navbar.Brand}>
-          💰 Gerenciador Financeiro
+        {/* Navbar.Brand */}
+        <Link href="/" passHref legacyBehavior> 
+          <Navbar.Brand>💰 Gerenciador Financeiro</Navbar.Brand>
         </Link>
         
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -18,16 +18,19 @@ const AppNavbar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             
-            <Link href="/" as={Nav.Link}>
-              Visão Geral
+            {/* Nav.Link: Usamos as="a" para forçar a tag <a> que o Bootstrap precisa 
+                e envolvemos com Link e legacyBehavior.
+            */}
+            <Link href="/" passHref legacyBehavior>
+              <Nav.Link as="a">Visão Geral</Nav.Link>
             </Link>
             
-            <Link href="/transactions" as={Nav.Link}>
-              Transações
+            <Link href="/transactions" passHref legacyBehavior>
+              <Nav.Link as="a">Transações</Nav.Link>
             </Link>
             
-            <Link href="/reports" as={Nav.Link}>
-              Relatórios
+            <Link href="/reports" passHref legacyBehavior>
+              <Nav.Link as="a">Relatórios</Nav.Link>
             </Link>
           </Nav>
         </Navbar.Collapse>
