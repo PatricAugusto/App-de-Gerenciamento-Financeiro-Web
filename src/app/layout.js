@@ -1,17 +1,7 @@
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import './globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AppNavbar from '../components/Navbar';
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { TransactionsProvider } from '../context/TransactionsContext'; 
 
 export const metadata = {
   title: 'Gerenciador Financeiro - Next.js',
@@ -24,12 +14,15 @@ export default function RootLayout({ children }) {
       <body>
         <AppNavbar /> 
         
-        <div className="mt-4"> 
-          <div className="container"> 
-            {children}
+        <TransactionsProvider> 
+          <div className="mt-4"> 
+            <div className="container"> 
+              {children}
+            </div>
           </div>
-        </div>
+        </TransactionsProvider>
+        
       </body>
     </html>
-  )
+  );
 }

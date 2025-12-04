@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
+import { useTransactions } from '../context/TransactionsContext';
 
 /**
  * Modal com formulário para adicionar ou editar uma transação.
@@ -10,6 +11,9 @@ import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
  * @param {function} props.handleClose - Função para fechar o modal.
  */
 const TransactionFormModal = ({ show, handleClose }) => {
+
+  const { addTransaction } = useTransactions();
+
   const [formData, setFormData] = useState({
     description: '',
     amount: '',
@@ -33,7 +37,7 @@ const TransactionFormModal = ({ show, handleClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Dados da Transação:', formData);
+    addTransaction(formData);
     
     setFormData({
       description: '',

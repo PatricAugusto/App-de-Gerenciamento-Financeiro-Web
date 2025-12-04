@@ -8,7 +8,6 @@ const AppNavbar = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        {/* Navbar.Brand */}
         <Link href="/" passHref legacyBehavior> 
           <Navbar.Brand>💰 Gerenciador Financeiro</Navbar.Brand>
         </Link>
@@ -18,9 +17,6 @@ const AppNavbar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             
-            {/* Nav.Link: Usamos as="a" para forçar a tag <a> que o Bootstrap precisa 
-                e envolvemos com Link e legacyBehavior.
-            */}
             <Link href="/" passHref legacyBehavior>
               <Nav.Link as="a">Visão Geral</Nav.Link>
             </Link>
