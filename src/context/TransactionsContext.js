@@ -1,6 +1,6 @@
 'use client'; 
 
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useMemo } from 'react';
 
 const TransactionsContext = createContext(null);
 
@@ -13,6 +13,27 @@ const INITIAL_TRANSACTIONS = [
 
 export const TransactionsProvider = ({ children }) => {
     const [transactions, setTransactions] = useState(INITIAL_TRANSACTIONS);
+
+    const summary = useMemo(() => {
+        const totals = transactions.reduce((acc, transaction) => {
+            const amount = parseFloat(transaction.amount); 
+
+            if (transaction.type === 'receita') {
+                acc.totalReceitas += amount;
+                acc.saldo += amount;
+            } else if (transaction.type === 'despesa') {
+                acc.totalDespesas += amount;
+                acc.saldo -= amount;
+            }
+            return acc;
+        }, {
+            totalReceitas: 0,
+            totalDespesas: 0,
+            saldo: 0,
+        });
+
+        return totals;
+    }, [transactions]);
 
     /**
      * Adiciona uma nova transação à lista.
@@ -31,6 +52,7 @@ export const TransactionsProvider = ({ children }) => {
     const contextValue = {
         transactions,
         addTransaction,
+        summary,
     };
 
     return (

@@ -1,12 +1,33 @@
+'use client'; 
+
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import SummaryCard from '../components/SummaryCard'; 
+import SummaryCard from '../components/SummaryCard';
+import { useTransactions } from '../context/TransactionsContext'; 
+
+const formatCurrency = (amount) => {
+  return amount.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+};
 
 const HomePage = () => {
+  const { summary } = useTransactions(); 
+  
   const summaryData = [
-    { title: 'Receitas Totais', value: 'R$ 5.500,00', variant: 'success' },
-    { title: 'Despesas Totais', value: 'R$ 2.100,00', variant: 'danger' },
-    { title: 'Saldo Atual', value: 'R$ 3.400,00', variant: 'primary' },
+    { 
+        title: 'Receitas Totais', 
+        value: formatCurrency(summary.totalReceitas), 
+        variant: 'success' 
+    },
+    { 
+        title: 'Despesas Totais', 
+        value: formatCurrency(summary.totalDespesas), 
+        variant: 'danger' 
+    },
+    { 
+        title: 'Saldo Atual', 
+        value: formatCurrency(summary.saldo), 
+        variant: 'primary' 
+    },
   ];
 
   return (
