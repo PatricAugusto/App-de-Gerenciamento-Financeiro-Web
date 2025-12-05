@@ -15,7 +15,7 @@ const AppNavbar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="ms-auto">
             
             <Link href="/" passHref legacyBehavior>
               <Nav.Link as="a">Visão Geral</Nav.Link>

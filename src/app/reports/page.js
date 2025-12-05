@@ -4,7 +4,6 @@ import React from 'react';
 import { Container, Table, Badge, Row, Col } from 'react-bootstrap';
 import { useTransactions } from '../../context/TransactionsContext'; 
 
-// Função auxiliar para formatar como moeda
 const formatCurrency = (amount) => {
   return amount.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 };
@@ -28,7 +27,6 @@ const aggregateByCategory = (transactions, type) => {
 const ReportsPage = () => {
   const { transactions } = useTransactions();
   
-  // Agregações de Receitas e Despesas
   const expenseSummary = aggregateByCategory(transactions, 'despesa');
   const revenueSummary = aggregateByCategory(transactions, 'receita');
 
@@ -37,7 +35,6 @@ const ReportsPage = () => {
       <h1 className="mb-4">Relatórios Financeiros</h1>
       
       <Row>
-        {/* Coluna de Despesas por Categoria */}
         <Col md={6} className="mb-4">
           <h2>Despesas por Categoria</h2>
           <Table striped bordered hover responsive className="shadow-sm">
@@ -60,7 +57,6 @@ const ReportsPage = () => {
           </Table>
         </Col>
 
-        {/* Coluna de Receitas por Categoria */}
         <Col md={6} className="mb-4">
           <h2>Receitas por Categoria</h2>
           <Table striped bordered hover responsive className="shadow-sm">
@@ -84,7 +80,6 @@ const ReportsPage = () => {
         </Col>
       </Row>
       
-      {/* Aqui poderíamos adicionar gráficos ou relatórios de período */}
       <div className="mt-5 p-4 border rounded bg-light">
           <p className="text-muted">Espaço reservado para gráficos avançados (Ex: Gráfico de pizza, Linha do tempo).</p>
       </div>
